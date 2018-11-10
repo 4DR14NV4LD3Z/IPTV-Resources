@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:tns="itq.edu/soa/iptvtransaccionfallidaresponse" targetNamespace="itq.edu/soa/iptvtransaccionfallidaresponse">
+	<xs:element name="transaccionFallidaResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="usuario">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="correo" type="tns:mail"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="transaccionRechazada">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="razon" type="tns:razon"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="mail">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="razon">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(ERROR_DATOS)|(CREDITO_INSUFICIENTE)"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
+

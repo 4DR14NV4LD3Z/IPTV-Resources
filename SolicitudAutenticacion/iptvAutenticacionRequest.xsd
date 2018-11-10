@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://itq.edu/soa/iptvautenticacionrequest" targetNamespace="http://itq.edu/soa/iptvautenticacionrequest" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="iptvAutenticacionRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="cliente">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="nombre">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:pattern value="([a-zA-Z]+[\s]*)+"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="apellidoPaterno" type="tns:aname"/>
+							<xs:element name="apellidoMaterno" type="tns:aname"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="usuario">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="correo" type="tns:mail"/>
+							<xs:element name="contrasena" type="tns:pass"/>
+							<xs:element name="plan" type="tns:plan"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="tarjetaCredito">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="numTarjeta" type="tns:creditdata"/>
+							<xs:element name="nombreTitular" type="tns:namedata"/>
+							<xs:element name="fechaVencimiento">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="month" type="tns:datemm"/>
+										<xs:element name="year" type="tns:dateaa"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="CVV" type="tns:cvvdata"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="aname">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([a-zA-Z]+)"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="mail">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="pass">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z@$!\d]{6,128}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="plan">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(BÁSICO)|(ESTÁNDAR)|(PREMIUM)"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="creditdata">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([4||5]{1}[\d]{15})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="namedata">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z]{1,}([ ][A-Z]{1,})*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="datemm">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(11|12)|([0][1-9])"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="dateaa">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[\d]{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="cvvdata">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[\d]{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
