@@ -9,7 +9,7 @@
 							<xs:element name="nombre">
 								<xs:simpleType>
 									<xs:restriction base="xs:string">
-										<xs:pattern value="([a-zA-Z]+[\s]*)+"/>
+										<xs:pattern value="([a-zA-Zñ]+[\s]*)+"/>
 									</xs:restriction>
 								</xs:simpleType>
 							</xs:element>
@@ -49,7 +49,7 @@
 	</xs:element>
 	<xs:simpleType name="aname">
 		<xs:restriction base="xs:string">
-			<xs:pattern value="([a-zA-Z]+)"/>
+			<xs:pattern value="([a-zA-ZÑñ]+)"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="mail">
@@ -74,7 +74,7 @@
 	</xs:simpleType>
 	<xs:simpleType name="namedata">
 		<xs:restriction base="xs:string">
-			<xs:pattern value="[A-Z]{1,}([ ][A-Z]{1,})*"/>
+			<xs:pattern value="([A-ZÑ]+[\s]*)+"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="datemm">
@@ -84,7 +84,7 @@
 	</xs:simpleType>
 	<xs:simpleType name="dateaa">
 		<xs:restriction base="xs:string">
-			<xs:pattern value="[\d]{2}"/>
+			<xs:pattern value="(18)|(19)|([2-9][\d])"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="cvvdata">
